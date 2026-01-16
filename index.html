@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive 3D mathematical function visualizer">
+    <title>3D Function Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="title-icon">📊</span>
+                3D Function Visualizer
+            </h1>
+            <p class="subtitle">Visualize mathematical functions in three-dimensional space</p>
+        </header>
+
+        <div class="content">
+            <aside class="control-panel">
+                <div class="panel-section">
+                    <h2 class="section-title">Mathematical Function</h2>
+                    <div class="input-group">
+                        <label for="function-input" class="input-label">z = f(x, y)</label>
+                        <input type="text" id="function-input" class="function-input"
+                            placeholder="sin(x + t) * cos(y + t)"
+                            value="sin(sqrt(x*x + y*y) - t) / sqrt(x*x + y*y + 0.1)">
+                        <button id="visualize-btn" class="btn btn-primary">
+                            <span class="btn-icon">✨</span>
+                            Visualize
+                        </button>
+                    </div>
+                    <p class="help-text">
+                        Usa: +, -, *, /, ^, sin, cos, tan, sqrt, abs, exp, log, PI, E
+                    </p>
+                </div>
+
+                <div class="panel-section">
+                    <h2 class="section-title">Examples</h2>
+                    <div class="examples-grid">
+                        <button class="example-btn" data-function="sin(x + t) * cos(y + t)">
+                            Cross Waves
+                        </button>
+                        <button class="example-btn" data-function="sin(sqrt(x*x + y*y) - t)">
+                            Ripple
+                        </button>
+                        <button class="example-btn" data-function="sin(x - t) * sin(y + t)">
+                            Sine Waves
+                        </button>
+                        <button class="example-btn" data-function="sin(x*y + t) * 0.5">
+                            Twisted
+                        </button>
+                        <button class="example-btn" data-function="sin(sqrt(x*x + y*y) - t*2) / sqrt(x*x + y*y + 0.1)">
+                            Mexican Hat
+                        </button>
+                        <button class="example-btn" data-function="cos(x + t) + cos(y - t)">
+                            Egg Carton
+                        </button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h2 class="section-title">Settings</h2>
+
+                    <div class="control-group">
+                        <label for="range-slider" class="control-label">
+                            Range (±)
+                            <span id="range-value" class="control-value">5</span>
+                        </label>
+                        <input type="range" id="range-slider" class="slider" min="1" max="10" value="5" step="0.5">
+                    </div>
+
+                    <div class="control-group">
+                        <label for="resolution-slider" class="control-label">
+                            Resolution
+                            <span id="resolution-value" class="control-value">80</span>
+                        </label>
+                        <input type="range" id="resolution-slider" class="slider" min="20" max="100" value="80"
+                            step="10">
+                    </div>
+
+                    <div class="help-text" style="margin-bottom: 1rem;">
+                        � Ocean color theme • Use variable <code>t</code> for animation:
+                        <code>sin(x + t) * cos(y + t)</code>
+                    </div>
+
+                    <button id="reset-camera-btn" class="btn btn-secondary">
+                        <span class="btn-icon">🔄</span>
+                        Reset View
+                    </button>
+                </div>
+            </aside>
+
+            <main class="visualization-container">
+                <div id="canvas-container" class="canvas-container">
+                    <div class="loading-overlay" id="loading-overlay">
+                        <div class="spinner"></div>
+                        <p>Generating visualization...</p>
+                    </div>
+                </div>
+                <div class="canvas-info">
+                    <p>🖱️ Click and drag to rotate | 🔍 Scroll to zoom | ⌨️ Right-click to pan</p>
+                </div>
+
+                <!-- Time Slider Controls -->
+                <div id="time-slider-container" class="time-slider-container">
+                    <div class="time-slider-header">
+                        <label class="control-label">
+                            Time Parameter (t)
+                            <span id="time-display" class="control-value">0.00</span>
+                        </label>
+                    </div>
+                    <div class="time-slider-controls">
+                        <input type="number" id="time-min" class="time-input" value="-5" step="0.1">
+                        <input type="range" id="time-slider" class="slider time-slider" min="-5" max="5" value="0"
+                            step="0.01">
+                        <input type="number" id="time-max" class="time-input" value="5" step="0.1">
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Three.js and Math.js from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
