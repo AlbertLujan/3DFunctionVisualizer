@@ -1,65 +1,32 @@
-# 3D Function Visualizer 📊
+# 3D Function Visualizer
 
-Interactive 3D mathematical function visualizer built with Three.js.
+A simple tool to visualize mathematical functions in 3D. Type a function like `sin(x) * cos(y)` and see it rendered in real-time.
 
-![3D Function Visualizer](https://img.shields.io/badge/3D-Function%20Visualizer-blue?style=for-the-badge)
+## Demo
 
-## ✨ Features
+Just open `index.html` in your browser. No build step, no dependencies to install.
 
-- **Real-time 3D visualization** of mathematical functions `z = f(x, y)`
-- **Time animation** using the `t` variable for dynamic visualizations
-- **Interactive controls**: rotate, zoom, and pan the 3D view
-- **Preset examples**: Cross Waves, Ripple, Mexican Hat, and more
-- **Customizable settings**: adjust range and resolution
-- **Beautiful ocean color theme** with smooth gradients
+## How to use
 
-## 🚀 Quick Start
+Enter any function of `x` and `y` in the input box. The result becomes the height (`z`).
 
-Simply open `index.html` in your browser - no installation required!
+Some examples:
+- `sin(x) + cos(y)` - wave pattern
+- `x*x + y*y` - bowl shape
+- `sin(sqrt(x*x + y*y))` - ripples from center
 
-```bash
-# Or use a local server
-npx serve .
-```
+You can also use `t` for animation:
+- `sin(x + t) * cos(y + t)` - animated waves
 
-## 📝 Usage
+Available: `sin`, `cos`, `tan`, `sqrt`, `abs`, `exp`, `log`, `PI`, `E`
 
-### Basic Functions
-```javascript
-z = sin(x) + cos(y)     // Wave patterns
-z = x*x + y*y           // Paraboloid (bowl)
-z = sqrt(x*x + y*y)     // Cone
-```
+## Controls
 
-### Animated Functions (use `t`)
-```javascript
-z = sin(x + t) * cos(y + t)                    // Cross Waves
-z = sin(sqrt(x*x + y*y) - t)                   // Ripple
-z = sin(sqrt(x*x + y*y) - t) / sqrt(x*x + y*y) // Mexican Hat
-```
+- Drag to rotate
+- Scroll to zoom
+- Right-click drag to pan
 
-### Available Functions
-- Operators: `+`, `-`, `*`, `/`, `^`
-- Trigonometric: `sin`, `cos`, `tan`
-- Other: `sqrt`, `abs`, `exp`, `log`
-- Constants: `PI`, `E`
+## Built with
 
-## 🎮 Controls
-
-- 🖱️ **Click and drag** - Rotate view
-- 🔍 **Scroll** - Zoom in/out
-- ⌨️ **Right-click drag** - Pan
-
-## 📚 Tutorial
-
-See [TUTORIAL.md](TUTORIAL.md) for a comprehensive guide on understanding 3D mathematical functions.
-
-## 🛠️ Technologies
-
-- [Three.js](https://threejs.org/) - 3D graphics
-- [Math.js](https://mathjs.org/) - Mathematical expression parsing
-- Vanilla HTML/CSS/JavaScript
-
-## 📄 License
-
-MIT License - feel free to use and modify!
+- Three.js for 3D rendering
+- Math.js for parsing expressions
